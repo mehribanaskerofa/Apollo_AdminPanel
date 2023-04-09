@@ -22,45 +22,17 @@ require_once 'functions/helper.php';
 
 
 
-if($_SERVER['REQUEST_METHOD']=="POST"){
-    if(
-            !isset($_POST['name']) || empty($_POST['name']) &&
-            !isset($_POST['password']) || empty($_POST['password'])
-    ){
-                echo "<h2 class='text-danger z-3'>Enter right username or password</h2>";
-                return;
-    }
 
-    $username=cleandata($_POST['name']);
-    $password=cleandata($_POST['password']);
-////
-//    print_r(md5('123'));
-//    die();
-
-    $query=$db->prepare('select * from admin where name=? and password=? limit 1');
-    $query->execute([$username,md5($password)]);
-    $admin=$query->fetch();
-
-
-    if(!$admin){
-        echo "<h2 class='text-danger'>Wrong username or password</h2>";
-        return;
-    }
-
-
-    $_SESSION['admin-user']='admin';
-    redirect('http://localhost/apollo/admin');
-}
 ?>
 
 
 
-<section class="vh-70 gradient-custom">
-    <div class="container py-5 h-70">
-        <div class="row d-flex justify-content-center align-items-center h-70">
+<section class="gradient-custom" style="height: 500px">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center" style="height: 500px">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;height: 500px">
+                    <div class="card-body p-5 text-center" >
 
                         <div class="mb-md-5 mt-md-4 pb-5">
 
@@ -100,3 +72,34 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+if($_SERVER['REQUEST_METHOD']=="POST"){
+    if(
+        !isset($_POST['name']) || empty($_POST['name']) &&
+        !isset($_POST['password']) || empty($_POST['password'])
+    ){
+        echo "<h2 class='text-danger z-3'>Enter right username or password</h2>";
+        return;
+    }
+
+    $username=cleandata($_POST['name']);
+    $password=cleandata($_POST['password']);
+////
+//    print_r(md5('123'));
+//    die();
+
+    $query=$db->prepare('select * from admin where name=? and password=? limit 1');
+    $query->execute([$username,md5($password)]);
+    $admin=$query->fetch();
+
+
+    if(!$admin){
+        echo "<h2 class='text-danger'>Wrong username or password</h2>";
+        return;
+    }
+
+
+    $_SESSION['admin-user']='admin';
+    redirect('http://localhost/apollo/admin');
+}
+?>
