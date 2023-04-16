@@ -7,7 +7,7 @@
 ![image](https://user-images.githubusercontent.com/74506433/232324925-64c933dc-4ad1-4f84-b27b-df64839187d5.png)
 4. Contact section admin panel from UI.
 ![image](https://user-images.githubusercontent.com/74506433/232324999-9197af06-30bb-4dea-bbd7-bc89310d4692.png)
-5. Apollo - UI page
+5. Apollo - UI page(All datas getting from admin panel)
 ![localhost_apollo_](https://user-images.githubusercontent.com/74506433/232325174-6152855a-f1cd-424b-b20a-4e6207bedb8c.png)
 
 
